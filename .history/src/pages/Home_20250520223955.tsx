@@ -1,7 +1,6 @@
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Environment, ContactShadows, useProgress } from '@react-three/drei';
+import { OrbitControls, useGLTF, Environment, ContactShadows } from '@react-three/drei';
 import styled from '@emotion/styled';
-import { useState, useEffect } from 'react';
 
 const FullScreen = styled.div`
   width: 100vw;
@@ -14,62 +13,6 @@ const FullScreen = styled.div`
   align-items: center;
   justify-content: center;
 `;
-
-const LoadingContainer = styled.div<{ isLoading: boolean }>`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: #222;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  opacity: ${props => props.isLoading ? 1 : 0};
-  transition: opacity 0.5s ease-in-out;
-  pointer-events: ${props => props.isLoading ? 'auto' : 'none'};
-  z-index: 1000;
-`;
-
-const ProgressBar = styled.div<{ progress: number }>`
-  width: 200px;
-  height: 4px;
-  background: #444;
-  border-radius: 2px;
-  margin-top: 20px;
-  overflow: hidden;
-
-  &::after {
-    content: '';
-    display: block;
-    width: ${props => props.progress}%;
-    height: 100%;
-    background: #fff;
-    transition: width 0.3s ease-in-out;
-  }
-`;
-
-function LoadingScreen() {
-  const { progress } = useProgress();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    if (progress === 100) {
-      setTimeout(() => setIsLoading(false), 500);
-    }
-  }, [progress]);
-
-  return (
-    <LoadingContainer isLoading={isLoading}>
-      <h2>Loading Model</h2>
-      <ProgressBar progress={progress} />
-      <p>{Math.round(progress)}%</p>
-    </LoadingContainer>
-  );
-}
 
 function ForgottenKnightModel() {
   const gltf = useGLTF('/forgotten_knight.glb');
@@ -85,7 +28,6 @@ function ForgottenKnightModel() {
 export const Home = () => {
   return (
     <FullScreen>
-      <LoadingScreen />
       <Canvas 
         camera={{ 
           position: [0, 1.5, 10],  // Moved camera straight up (y: 8)
@@ -109,7 +51,7 @@ export const Home = () => {
         
         {/* Environment and ground reflection */}
         <Environment preset="dawn" /> 
-        {/* the preset can be studio */}
+        {/*  */}
         <ContactShadows
           position={[0, -1.5, 0]}
           opacity={0.4}

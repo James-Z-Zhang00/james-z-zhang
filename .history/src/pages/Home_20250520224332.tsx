@@ -53,7 +53,7 @@ const ProgressBar = styled.div<{ progress: number }>`
 `;
 
 function LoadingScreen() {
-  const { progress } = useProgress();
+  const { progress, active } = useProgress();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
