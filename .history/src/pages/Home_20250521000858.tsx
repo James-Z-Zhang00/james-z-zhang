@@ -64,9 +64,8 @@ const NavigationContainer = styled.div`
     padding: 0;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
-    padding-top: 5vh;
-    gap: 1.5rem;
+    justify-content: center;
+    padding-top: 0;
   }
 `;
 
@@ -82,10 +81,11 @@ const NavigationColumn = styled.div`
   @media (max-width: 768px) {
     width: 100%;
     height: auto;
-    gap: 1.5rem;
+    gap: 0.5rem;
     padding: 0;
     flex-direction: column;
     align-items: center;
+    margin-top: -30vh;
   }
 `;
 
@@ -200,8 +200,7 @@ function ForgottenKnightModel() {
     if (modelRef.current) {
       const time = state.clock.getElapsedTime();
       const motion = isMobile ? Math.sin(time * 0.8) * 0.25 : Math.sin(time * 1.0) * 0.3;
-      const offset = isMobile ? -2.3 : -2;
-      const yPos = offset + motion;
+      const yPos = -2 + motion;
       modelRef.current.position.y = yPos;
       
       if (lightRef.current) {

@@ -56,18 +56,9 @@ const NavigationContainer = styled.div`
   height: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 0 4rem;
+  padding: 0 8rem;
   pointer-events: none;
   z-index: 2;
-
-  @media (max-width: 768px) {
-    padding: 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    padding-top: 5vh;
-    gap: 1.5rem;
-  }
 `;
 
 const NavigationColumn = styled.div`
@@ -77,16 +68,7 @@ const NavigationColumn = styled.div`
   gap: 3rem;
   height: 100%;
   padding: 2rem 0;
-  width: 200px;
-
-  @media (max-width: 768px) {
-    width: 100%;
-    height: auto;
-    gap: 1.5rem;
-    padding: 0;
-    flex-direction: column;
-    align-items: center;
-  }
+  width: 180px;
 `;
 
 const NavLink = styled.a`
@@ -112,11 +94,9 @@ const NavLink = styled.a`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.1rem;
-    padding: 0.5rem 1rem;
-    min-width: 120px;
-    width: 80%;
-    max-width: 200px;
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    min-width: 150px;
   }
 `;
 
@@ -199,9 +179,7 @@ function ForgottenKnightModel() {
   useFrame((state) => {
     if (modelRef.current) {
       const time = state.clock.getElapsedTime();
-      const motion = isMobile ? Math.sin(time * 0.8) * 0.25 : Math.sin(time * 1.0) * 0.3;
-      const offset = isMobile ? -2.3 : -2;
-      const yPos = offset + motion;
+      const yPos = -2 + Math.sin(time * 1.0) * 0.3;
       modelRef.current.position.y = yPos;
       
       if (lightRef.current) {
@@ -215,7 +193,7 @@ function ForgottenKnightModel() {
       <primitive 
         ref={modelRef}
         object={gltf.scene} 
-        scale={isMobile ? 1.0 : 1.5} 
+        scale={isMobile ? 1.2 : 1.5} 
         position={isMobile ? [0, -2, 0] : [0, -3.0, 0]}
       />
       <group ref={lightRef}>

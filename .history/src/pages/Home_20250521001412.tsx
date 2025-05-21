@@ -200,7 +200,7 @@ function ForgottenKnightModel() {
     if (modelRef.current) {
       const time = state.clock.getElapsedTime();
       const motion = isMobile ? Math.sin(time * 0.8) * 0.25 : Math.sin(time * 1.0) * 0.3;
-      const offset = isMobile ? -2.3 : -2;
+      const offset = isMobile ? -2.5 : -2;
       const yPos = offset + motion;
       modelRef.current.position.y = yPos;
       
