@@ -13,8 +13,6 @@ const FullScreen = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('/background1.png') no-repeat center center;
-  background-size: cover;
 `;
 
 const CanvasContainer = styled.div`
@@ -23,7 +21,9 @@ const CanvasContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  background: url('/background1.png') no-repeat center center;
+  background-size: cover;
+  z-index: 0;
   
   canvas {
     background: transparent !important;
@@ -175,6 +175,7 @@ export const Home = () => {
             height: '100%'
           }}
         >
+          <color attach="background" args={['transparent']} />
           
           {/* Base ambient light */}
           <ambientLight intensity={1.0} />

@@ -175,6 +175,7 @@ export const Home = () => {
             height: '100%'
           }}
         >
+          <color attach="background" args={['transparent']} />
           
           {/* Base ambient light */}
           <ambientLight intensity={1.0} />

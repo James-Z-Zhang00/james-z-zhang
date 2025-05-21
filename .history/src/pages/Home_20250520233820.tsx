@@ -13,8 +13,6 @@ const FullScreen = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('/background1.png') no-repeat center center;
-  background-size: cover;
 `;
 
 const CanvasContainer = styled.div`
@@ -23,7 +21,9 @@ const CanvasContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 1;
+  background: url('/background1.png') no-repeat center center;
+  background-size: cover;
+  z-index: 0;
   
   canvas {
     background: transparent !important;
@@ -102,7 +102,7 @@ function LoadingScreen() {
 function ForgottenKnightModel() {
   const gltf = useGLTF('/forgotten_knight.glb');
   const modelRef = useRef<Group>(null);
-  const lightRef = useRef<Group>(null);
+  const shadowRef = useRef<Group>(null);
   
   useFrame((state) => {
     if (modelRef.current) {
@@ -110,9 +110,9 @@ function ForgottenKnightModel() {
       const yPos = -2 + Math.sin(time * 1.0) * 0.3;
       modelRef.current.position.y = yPos;
       
-      // Update light position to follow the model
-      if (lightRef.current) {
-        lightRef.current.position.y = yPos + 2; // Position light above the model
+      // Update shadow position to follow the model
+      if (shadowRef.current) {
+        shadowRef.current.position.y = yPos - 1.5;
       }
     }
   });
@@ -125,22 +125,13 @@ function ForgottenKnightModel() {
         scale={1.5} 
         position={[0, -2, 0]}
       />
-      <group ref={lightRef}>
-        <spotLight
-          position={[0, 2, 0]}
-          angle={0.3}
-          penumbra={1}
-          intensity={1.5}
-          castShadow
-        />
-        <pointLight position={[0, 2, 0]} intensity={0.5} />
-      </group>
       <ContactShadows
+        ref={shadowRef}
         position={[0, -3.5, 0]}
-        opacity={0.2}
+        opacity={0.3}
         scale={10}
-        blur={2}
-        far={5}
+        blur={3}
+        far={10}
         resolution={256}
         color="#000000"
       />
@@ -176,11 +167,25 @@ export const Home = () => {
           }}
         >
           
-          {/* Base ambient light */}
-          <ambientLight intensity={1.0} />
+          {/* Enhanced lighting setup */}
+          <ambientLight intensity={1.5} />
+          <spotLight
+            position={[10, 110, 10]}
+            angle={0.15}
+            penumbra={1}
+            intensity={1}
+            castShadow
+          />
+          <pointLight position={[-10, -10, -10]} intensity={0.5} />
           
           {/* Environment and ground reflection */}
           <Environment preset="lobby" />
+          <ContactShadows
+            position={[0, -1.5, 0]}
+            opacity={0.4}
+            scale={10}
+            blur={2.5}
+          />
           
           <ForgottenKnightModel />
           <OrbitControls 
