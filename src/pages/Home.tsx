@@ -1,60 +1,75 @@
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, useGLTF, Environment, ContactShadows } from '@react-three/drei';
 import styled from '@emotion/styled';
-import { motion } from 'framer-motion';
 
-const PageContainer = styled.div`
-  min-height: 100vh;
+const FullScreen = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #222;
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
-const Header = styled.header`
-  padding: 1rem 2rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-`;
-
-const MainContent = styled.main`
-  flex: 1;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  text-align: center;
-`;
-
-const Title = styled(motion.h2)`
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #333;
-`;
-
-const Subtitle = styled(motion.p)`
-  font-size: 1.2rem;
-  color: #666;
-  margin-bottom: 2rem;
-`;
+function ForgottenKnightModel() {
+  const gltf = useGLTF('/forgotten_knight.glb');
+  return (
+    <primitive 
+      object={gltf.scene} 
+      scale={1.5} 
+      position={[0, -2, 0]}  // [x, y, z] - y controls vertical position
+    />
+  );
+}
 
 export const Home = () => {
   return (
-    <PageContainer>
-      <Header>
-        <h1>Your Name</h1>
-      </Header>
-      <MainContent>
-        <Title
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          Welcome to My Portfolio
-        </Title>
-        <Subtitle
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          I'm a developer passionate about creating amazing web experiences
-        </Subtitle>
-      </MainContent>
-    </PageContainer>
+    <FullScreen>
+      <Canvas 
+        camera={{ 
+          position: [0, 1.5, 10],  // Moved camera straight up (y: 8)
+          fov: 45,
+          near: 0.1,
+          far: 1000
+        }}
+      >
+        <color attach="background" args={['#222']} />
+        
+        {/* Enhanced lighting setup */}
+        <ambientLight intensity={1.5} />
+        <spotLight
+          position={[10, 110, 10]}
+          angle={0.15}
+          penumbra={1}
+          intensity={1}
+          castShadow
+        />
+        <pointLight position={[-10, -10, -10]} intensity={0.5} />
+        
+        {/* Environment and ground reflection */}
+        <Environment preset="studio" />
+        <ContactShadows
+          position={[0, -1.5, 0]}
+          opacity={0.4}
+          scale={10}
+          blur={2.5}
+        />
+        
+        <ForgottenKnightModel />
+        <OrbitControls 
+          enablePan={false}
+          minPolarAngle={0}        // Allow viewing from above
+          maxPolarAngle={Math.PI}  // Allow full rotation
+          minDistance={2}
+          maxDistance={15}         // Increased max distance for better view from above
+        />
+      </Canvas>
+    </FullScreen>
   );
-}; 
+};
+
+// Required for GLTF loading
+useGLTF.preload('/forgotten_knight.glb'); 
