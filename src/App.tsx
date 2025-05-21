@@ -1,17 +1,17 @@
 import { Home } from './pages/Home';
-import { Global } from '@emotion/react';
+import { Global, css } from '@emotion/react';
 
-const globalStyles = {
-  '*': {
-    margin: 0,
-    padding: 0,
-    boxSizing: 'border-box',
-  },
-  body: {
-    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-    backgroundColor: '#f5f5f5',
-  },
-};
+const globalStyles = css`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
+`;
 
 function App() {
   return (
