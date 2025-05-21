@@ -3,8 +3,6 @@ import { OrbitControls, useGLTF, Environment, ContactShadows, useProgress } from
 import styled from '@emotion/styled';
 import { useState, useEffect, useRef } from 'react';
 import { Group } from 'three';
-import * as THREE from 'three';
-import { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 
 // Custom hook for screen size detection
 const useIsMobile = () => {
@@ -197,7 +195,6 @@ function ForgottenKnightModel() {
   const modelRef = useRef<Group>(null);
   const lightRef = useRef<Group>(null);
   const isMobile = useIsMobile();
-  const controlsRef = useRef<OrbitControlsImpl>(null);
   
   useFrame((state) => {
     if (modelRef.current) {
@@ -210,16 +207,6 @@ function ForgottenKnightModel() {
       if (lightRef.current) {
         lightRef.current.position.y = yPos + 2;
       }
-    }
-
-    // Handle smooth return to original position
-    if (controlsRef.current) {
-      const controls = controlsRef.current;
-      const targetRotation = 0;
-      const currentRotation = controls.getAzimuthalAngle();
-      const newRotation = THREE.MathUtils.lerp(currentRotation, targetRotation, 0.02);
-      controls.setAzimuthalAngle(newRotation);
-      controls.update();
     }
   });
 
@@ -256,7 +243,6 @@ function ForgottenKnightModel() {
 
 export const Home = () => {
   const isMobile = useIsMobile();
-  const controlsRef = useRef<OrbitControlsImpl>(null);
 
   return (
     <FullScreen>
@@ -294,11 +280,15 @@ export const Home = () => {
             height: '100%'
           }}
         >
+          
+          {/* Base ambient light */}
           <ambientLight intensity={1.0} />
+          
+          {/* Environment and ground reflection */}
           <Environment preset="lobby" />
+          
           <ForgottenKnightModel />
           <OrbitControls 
-            ref={controlsRef}
             enablePan={false}
             minPolarAngle={0}
             maxPolarAngle={Math.PI}
@@ -307,6 +297,9 @@ export const Home = () => {
             enableDamping
             dampingFactor={0.05}
             rotateSpeed={isMobile ? 0.5 : 1}
+            autoRotate
+            autoRotateSpeed={1}
+            makeDefault
           />
         </Canvas>
       </CanvasContainer>

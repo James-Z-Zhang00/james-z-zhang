@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { useState, useEffect, useRef } from 'react';
 import { Group } from 'three';
 import * as THREE from 'three';
-import { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 
 // Custom hook for screen size detection
 const useIsMobile = () => {
@@ -197,7 +196,8 @@ function ForgottenKnightModel() {
   const modelRef = useRef<Group>(null);
   const lightRef = useRef<Group>(null);
   const isMobile = useIsMobile();
-  const controlsRef = useRef<OrbitControlsImpl>(null);
+  const controlsRef = useRef<any>(null);
+  const [isUserInteracting, setIsUserInteracting] = useState(false);
   
   useFrame((state) => {
     if (modelRef.current) {
@@ -213,12 +213,9 @@ function ForgottenKnightModel() {
     }
 
     // Handle smooth return to original position
-    if (controlsRef.current) {
+    if (controlsRef.current && !isUserInteracting) {
       const controls = controlsRef.current;
-      const targetRotation = 0;
-      const currentRotation = controls.getAzimuthalAngle();
-      const newRotation = THREE.MathUtils.lerp(currentRotation, targetRotation, 0.02);
-      controls.setAzimuthalAngle(newRotation);
+      controls.azimuthAngle = THREE.MathUtils.lerp(controls.azimuthAngle, 0, 0.02);
       controls.update();
     }
   });
@@ -256,7 +253,8 @@ function ForgottenKnightModel() {
 
 export const Home = () => {
   const isMobile = useIsMobile();
-  const controlsRef = useRef<OrbitControlsImpl>(null);
+  const controlsRef = useRef<any>(null);
+  const [isUserInteracting, setIsUserInteracting] = useState(false);
 
   return (
     <FullScreen>
@@ -307,6 +305,8 @@ export const Home = () => {
             enableDamping
             dampingFactor={0.05}
             rotateSpeed={isMobile ? 0.5 : 1}
+            onStart={() => setIsUserInteracting(true)}
+            onEnd={() => setIsUserInteracting(false)}
           />
         </Canvas>
       </CanvasContainer>
