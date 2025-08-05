@@ -1,54 +1,7 @@
-# Personal Portfolio
+# My Personal Website
 
-A modern, interactive portfolio website built with React, TypeScript, and Three.js.
+est. May 2025
 
-## Features
+re-est. August 2025 
 
-- 🎨 Modern and responsive design
-- 🎮 Interactive 3D elements using Three.js
-- ⚡ Fast and optimized performance with Vite
-- 🎭 Smooth animations with Framer Motion
-- 🎯 Type-safe development with TypeScript
 
-## Tech Stack
-
-- React 18
-- TypeScript
-- Vite
-- Three.js
-- Framer Motion
-- Emotion (for styled components)
-- React Router
-
-## Getting Started
-
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-3. Start the development server:
-   ```bash
-   npm run dev
-   ```
-4. Open [http://localhost:5173](http://localhost:5173) in your browser
-
-## Project Structure
-
-```
-src/
-├── components/     # Reusable UI components
-└── pages/         # Page components
-```
-
-## Available Scripts
-
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint
-- `npm run type-check` - Run TypeScript type checking
-
-## License
-
-MIT
