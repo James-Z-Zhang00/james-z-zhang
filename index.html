@@ -29,15 +29,23 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 16px;
         margin: 20px auto;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);  
       }
 
       .card img {
         width: 100%;
         border-radius: 10px 10px 0 0;
       }
+      
       .card h3 {
         margin-top: 10px;
       }
+      
       .card p {
         color: #555;
       }
@@ -71,6 +79,11 @@
       <div class="card">
         <img src="https://via.placeholder.com/300x150" alt="Card Image">
         <h3>Google Drive</h3>
+        <p>This is a simple card component using HTML and CSS.</p>
+      </div>
+      <div class="card">
+        <img src="https://via.placeholder.com/300x150" alt="Card Image">
+        <h3>AI application</h3>
         <p>This is a simple card component using HTML and CSS.</p>
       </div>
       <div class="card">
