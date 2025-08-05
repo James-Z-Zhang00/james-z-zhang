@@ -18,7 +18,7 @@
         display: flex;
         gap: 20px; /* space between cards */
         flex-wrap: wrap; /* allow wrapping on small screens */
-        justify-content: left; /* center cards horizontally */
+        justify-content: flex-start; /* center cards horizontally */
         padding: 20px;
       }
 
@@ -29,6 +29,7 @@
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         padding: 16px;
         margin: 20px auto;
+        background-color: white;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
@@ -41,17 +42,18 @@
         width: 100%;
         border-radius: 10px 10px 0 0;
       }
-      
+
       .card h3 {
         margin-top: 10px;
       }
-      
+
       .card p {
         color: #555;
       }
 
       body {
         font-family: 'Roboto', 'Open Sans', Arial, sans-serif;
+        background-color: aquamarine;
       }
     </style>
   </head>
@@ -61,16 +63,19 @@
       <b>James Z. Zhang</b>
       <br>
       <br>
+      <p>Software Engineer | AI Solution Provider</p>
+      <p>Baseball 🥎 Volunteerism 🙋‍♂️ Guitar 🎸 American History 🇺🇸</p>
+      <br>
+      <br>
 
-      <a href="https://github.com/James-Z-Zhang00"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://www.linkedin.com/in/james-z-zhang00/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://github.com/James-Z-Zhang00" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://www.linkedin.com/in/james-z-zhang00/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       <i class="fas fa-envelope"></i> james.z.zhang00@gmail.com
       <i class="fas fa-map-marker-alt"></i> Boston, MA
 
     </div>
 
     <div class="project">
-      <h3>Projects</h3>
       <div class="card">
         <img src="https://via.placeholder.com/300x150" alt="Card Image">
         <h3>Gmail</h3>
