@@ -54,81 +54,104 @@
       body {
         font-family: 'Roboto', 'Open Sans', Arial, sans-serif;
         background-color: aquamarine;
+        padding: 2.0rem 3.0rem;
+      }
+
+      .comment {
+        color: red;
+      }
+
+      .card-image {
+        width: 150px;
+      }
+
+      .education-section {
+        display: flex;
+        gap: 20px; /* space between cards */
+        flex-wrap: wrap; /* allow wrapping on small screens */
+        justify-content: flex-start; /* center cards horizontally */
+        padding: 20px;
       }
     </style>
   </head>
   <body>
     <div class="base-info">
-
       <b>James Z. Zhang</b>
       <br>
-      <br>
-      <p>Software Engineer | AI Solution Provider</p>
+      <p>Full Stack Software Engineer</p>
       <p>Baseball 🥎 Volunteerism 🙋‍♂️ Guitar 🎸 American History 🇺🇸</p>
       <br>
-      <br>
-
       <a href="https://github.com/James-Z-Zhang00" target="_blank"><i class="fab fa-github"></i> GitHub</a>
       <a href="https://www.linkedin.com/in/james-z-zhang00/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
       <i class="fas fa-envelope"></i> james.z.zhang00@gmail.com
       <i class="fas fa-map-marker-alt"></i> Boston, MA
-
     </div>
+    <br>
+    <hr>
+
+    <h3>Core Project</h3>
+    <hr>
 
     <div class="card-container">
       <div class="card">
-        <img src="https://via.placeholder.com/300x150" alt="Card Image">
-        <h3>Gmail & Google Drive Cloud</h3>
-        <p>This is a simple card component using HTML and CSS.</p>
+        <h3>jCloud</h3>
+        <i class="comment">Gmail & Google Drive Cloud Clone & Modification</i>
+        <p>Email and cloud storage service</p>
       </div>
       <div class="card">
-        <img src="https://via.placeholder.com/300x150" alt="Card Image">
-        <h3>AI application</h3>
-        <p>This is a simple card component using HTML and CSS.</p>
+        <h3>Name to be decided</h3>
+        <i class="comment">AI application</i>
+        <p>Full Stack AI application with data training</p>
       </div>
       <div class="card">
-        <img src="https://via.placeholder.com/300x150" alt="Card Image">
-        <h3>Complex Backend Project</h3>
-        <p>This is a simple card component using HTML and CSS.</p>
-      </div>
-    </div>
-
-    <div class="card-container">
-      <div class="card">
-        <img src="https://via.placeholder.com/300x150" alt="Card Image">
-        <h3>Gmail & Google Drive Cloud</h3>
-        <p>This is a simple card component using HTML and CSS.</p>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x150" alt="Card Image">
-        <h3>AI application</h3>
-        <p>This is a simple card component using HTML and CSS.</p>
-      </div>
-      <div class="card">
-        <img src="https://via.placeholder.com/300x150" alt="Card Image">
-        <h3>Complex Backend Project</h3>
-        <p>This is a simple card component using HTML and CSS.</p>
+        <h3>Encryption Algorithm</h3>
+        <i class="comment">Complex Backend Project</i>
+        <p>Registering patent at US Patent and Trademarks Office</p>
       </div>
     </div>
 
+    <h3>Education</h3>
+    <hr>
+
+    <div class="education-section">
+      <img src="./img/northeastern-university.jpg" alt="Northeastern University Logo" width="200px">
+      <div>
+        <p>Master of Engineering in Software Engineering System</p>
+        <p>Jan. 2024 - expect May 2026 (after co-op)</p>
+      </div>
+    </div>
+
+    <div class="education-section">
+      <img src="./img/massey-university.jpg" alt="Massey University Logo" width="200px">
+      <div>
+        <p>Bachelor of Science in Computer Science</p>
+        <p>Jan. 2020 - Jun. 2023</p>
+      </div>
+    </div>
+
+    <h3>Volunteer Contribution</h3>
+    <hr>
+
     <div class="card-container">
       <div class="card">
-        <img src="https://via.placeholder.com/300x150" alt="Card Image">
-        <h3>Gmail & Google Drive Cloud</h3>
-        <p>This is a simple card component using HTML and CSS.</p>
+        <img src="" alt="Red Cross Image" class="card-image">
+        <h3>American Red Cross</h3>
+        <p>Service to the Armed Forces - Caseworker in Massachusetts</p>
       </div>
       <div class="card">
-        <img src="https://via.placeholder.com/300x150" alt="Card Image">
-        <h3>AI application</h3>
-        <p>This is a simple card component using HTML and CSS.</p>
+        <img src="" alt="American Food Bank Image" class="card-image">
+        <h3>American Food Bank</h3>
+        <p>Greater Boston Food Bank</p>
+        <p>Second Harvest Food Bank</p>
+        <p>New York Cases</p>
       </div>
       <div class="card">
-        <img src="https://via.placeholder.com/300x150" alt="Card Image">
-        <h3>Complex Backend Project</h3>
-        <p>This is a simple card component using HTML and CSS.</p>
+        <img src="" alt="Habitat for Humanity Image" class="card-image">
+        <h3>Habitat for Humanity</h3>
+        <p>Construction Site</p>
+        <p>Restore</p>
       </div>
     </div>
 
   </body>
 </html>
-w
